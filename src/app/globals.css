@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #f0e8d0;
 }
 
 @theme inline {
@@ -10,17 +10,53 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Gold palette */
+  --color-gold:         #C9A84C;
+  --color-gold-light:   #E8D08A;
+  --color-gold-dim:     rgba(201, 168, 76, 0.15);
+  --color-gold-border:  rgba(201, 168, 76, 0.2);
+  --color-gold-glow:    rgba(201, 168, 76, 0.35);
+
+  /* Base */
+  --color-surface:      rgba(255, 255, 255, 0.04);
+  --color-surface-hover:rgba(255, 255, 255, 0.08);
+
+  /* Animations */
+  --animate-orb:        orbFloat 8s ease-in-out infinite alternate;
+  --animate-chip:       chipIn 0.5s ease both;
+  --animate-spin-slow:  spin 0.7s linear infinite;
+  --animate-pulse-dot:  pulseDot 2s ease-in-out infinite;
+  --animate-fade-slide: fadeSlide 0.6s ease both;
+  --animate-slide-up:   slideUp 0.8s ease 0.3s both;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes orbFloat {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(20px, 30px) scale(1.05); }
+}
+
+@keyframes chipIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
